@@ -16,26 +16,29 @@ function typeInput(event) {
 
 function typeOperation(event) {
   event.preventDefault();
-  operator = $(this).attr('id');
-  inputCount += 1;
-  $('#input' + inputCount).append($(this).text());
-  inputCount += 1;
+  if (inputCount == 1) {
+    operator = $(this).attr('id');
+    inputCount += 1;
+    $('#input' + inputCount).append($(this).text());
+    inputCount += 1;
+  }
 }
 
 function calculate(event) {
   event.preventDefault();
-
-  var val1 = $('#input1').text();
-  var val2 = $('#input3').text();
-  console.log(operator);
-  var numbers = 'x=' + val1 + '&y=' + val2;
-  console.log(numbers);
-  $.ajax({
-    url: '/calc/' + operator,
-    data: numbers,
-    type: 'POST',
-    success: showResult
-  });
+  if (inputCount == 3) {
+    var val1 = $('#input1').text();
+    var val2 = $('#input3').text();
+    console.log(operator);
+    var numbers = 'x=' + val1 + '&y=' + val2;
+    console.log(numbers);
+    $.ajax({
+      url: '/calc/' + operator,
+      data: numbers,
+      type: 'POST',
+      success: showResult
+    });
+  }
 }
 
 function showResult() {
@@ -47,9 +50,13 @@ function showResult() {
 }
 
 function appendResult(obj) {
-  $('#display').append('<div class="answer">'+ obj.result +'</div>');
-  inputCount = 1;
+  $('.answer').remove();
+  $('#display').append('<div class="answer">'+ '= ' + obj.result +'</div>');
+  if(inputCount == 3) {
+    $('#buttons').one('click', clear);
+  }
 }
+
 
 function clear() {
   $('.answer').remove();
