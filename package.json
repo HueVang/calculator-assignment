@@ -1,0 +1,20 @@
+{
+  "name": "upsilon-weekend-3-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "huevang100@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "install": "^0.8.4",
+    "npm": "^4.1.1"
+  }
+}
