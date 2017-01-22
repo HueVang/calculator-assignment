@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/views/style.css">
-    <script type="text/javascript" src="/jquery.min.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/client.js" charset="utf-8"></script>
-    <title>Calculator</title>
-  </head>
-  <body>
-    <h1>Calculator</h1>
-    <form id="calculator">
-      <label>First value</label>
-      <input type="number" name="x" id="x"/>
-      <label>Second value</label>
-      <input type="number" name="y" id="y"/>
-      <button type="submit" id="add">add</button>
-      <button type="submit" id="subtract">Subtract</button>
-      <button type="submit" id="divide">Divide</button>
-      <button type="summit" id="multiply">Multiply</button>
-    </form>
-    <div id="display">
-
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="/jquery.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="/client.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/views/style.css">
+  <title>Calculator</title>
+</head>
+<body>
+  <h1>Calculator</h1>
+  <div id="calculator" class="container">
+    <div id="screen" class="">
+      <button class="btn-danger col-lg-3" id="clear">C</button>
+      <span id="input1" class="screen"></span>
+      <span id="input2" class="screen"></span>
+      <span id="input3" class="screen"></span>
     </div>
-    <button id="clear">Clear</button>
-  </body>
+    <div id="display">
+    </div>
+    <form id="buttons">
+      <input type="button" class="input btn-primary col-lg-3" id="7" value="7"/>
+      <input type="button" class="input btn-primary col-lg-3" id="8" value="8"/>
+      <input type="button" class="input btn-primary col-lg-3" id="9" value="9"/>
+      <button class="operation btn-warning col-lg-3" id="add">+</button>
+      <input type="button" class="input btn-primary col-lg-3" id="4" value="4"/>
+      <input type="button" class="input btn-primary col-lg-3" id="5" value="5"/>
+      <input type="button" class="input btn-primary col-lg-3" id="6" value="6"/>
+      <button class="operation btn-warning col-lg-3" id="subtract">-</button>
+      <input type="button" class="input btn-primary col-lg-3" id="1" value="1"/>
+      <input type="button" class="input btn-primary col-lg-3" id="2" value="2"/>
+      <input type="button" class="input btn-primary col-lg-3" id="3" value="3"/>
+      <button class="operation btn-warning col-lg-3" id="divide">/</button>
+      <input type="button" class="input btn-primary col-lg-3" id="0" value="0"/>
+      <input type="button" class="input btn-primary col-lg-3" id="." value="."/>
+      <button type="submit" class="btn-success col-lg-3" id="equals">=</button>
+      <button class="operation btn-warning col-lg-3" id="multiply">*</button>
+    </form>
+  </div>
+</body>
 </html>

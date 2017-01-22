@@ -1,19 +1,37 @@
 $(function() {
   console.log('document loaded');
 
-  $('#calculator').on('click', 'button', calculate);
+  $('.input').on('click', typeInput);
+  $('.operation').on('click', typeOperation);
+  $('#calculator').on('click', '#equals', calculate);
   $('#clear').on('click', clear);
 });
+var inputCount = 1;
+var operator = '';
 
+function typeInput(event) {
+  event.preventDefault();
+  $('#input' + inputCount).append($(this).attr('id'));
+}
+
+function typeOperation(event) {
+  event.preventDefault();
+  operator = $(this).attr('id');
+  inputCount += 1;
+  $('#input' + inputCount).append($(this).text());
+  inputCount += 1;
+}
 
 function calculate(event) {
   event.preventDefault();
-  var math = $(this).attr('id');
-  console.log(math);
-  var numbers = $(this).parent().serialize() + '&type=' + math;
+
+  var val1 = $('#input1').text();
+  var val2 = $('#input3').text();
+  console.log(operator);
+  var numbers = 'x=' + val1 + '&y=' + val2;
   console.log(numbers);
   $.ajax({
-    url: '/calc/' + math,
+    url: '/calc/' + operator,
     data: numbers,
     type: 'POST',
     success: showResult
@@ -30,9 +48,11 @@ function showResult() {
 
 function appendResult(obj) {
   $('#display').append('<div class="answer">'+ obj.result +'</div>');
+  inputCount = 1;
 }
 
 function clear() {
-  $('.answer').remove()
-  $('#calculator')[0].reset();
+  $('.answer').remove();
+  $('.screen').text('');
+  inputCount = 1;
 }
